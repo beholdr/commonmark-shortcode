@@ -22,7 +22,7 @@ use League\CommonMark\MarkdownConverter;
 
 // create shortcodes registry
 $registry = new ShortcodeRegistry();
-$registry->register('my-code', fn () => (/* Your callback */));
+$registry->register('my-code', fn (array $attrs) => /* Your callback */);
 
 // register extension
 $environment = new Environment();
