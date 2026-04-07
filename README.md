@@ -57,8 +57,9 @@ You can use this extension with [graham-campbell/markdown](https://github.com/Gr
 2. Bind `ShortcodeRegistry` as singleton inside your `AppServiceProvider` and register your shortcodes:
 
 ```php
-use use Beholdr\CommonmarkShortcode\ShortcodeAttributes;
+use Beholdr\CommonmarkShortcode\ShortcodeAttributes;
 use Beholdr\CommonmarkShortcode\ShortcodeRegistry;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
