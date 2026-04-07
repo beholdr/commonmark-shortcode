@@ -4,6 +4,12 @@
     "containerEnv": {
         "XDEBUG_MODE": "off"
     },
+    "features": {
+        "ghcr.io/danzilberdan/devcontainers/opencode:0": {}
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.local/share/opencode/auth.json,target=/mnt/opencode-auth.json,type=bind,consistency=cached"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
@@ -11,7 +17,8 @@
                 "EditorConfig.EditorConfig",
                 "liamhammett.temphpest",
                 "neilbrayfield.php-docblocker",
-                "shardulm94.trailing-spaces"
+                "shardulm94.trailing-spaces",
+                "sst-dev.opencode"
             ]
         }
     }
