@@ -42,6 +42,48 @@ $attrs = ['foo' => 'bar', 'enabled' => true];
 ShortcodeAttributes::stringify($attrs); // `foo=bar enabled`
 ```
 
+### Laravel example
+
+You can use this extension with [graham-campbell/markdown](https://github.com/GrahamCampbell/Laravel-Markdown) or [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown) packages.
+
+1. Register extension in the markdown package config:
+
+```php
+'extensions' => [
+    Beholdr\CommonmarkShortcode\ShortcodeExtension::class,
+],
+```
+
+2. Bind `ShortcodeRegistry` as singleton inside your `AppServiceProvider` and register your shortcodes:
+
+```php
+use use Beholdr\CommonmarkShortcode\ShortcodeAttributes;
+use Beholdr\CommonmarkShortcode\ShortcodeRegistry;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->singleton(ShortcodeRegistry::class, fn () => new ShortcodeRegistry);
+    }
+
+    public function boot(): void
+    {
+        // register `[calculator attr=value]` shortcode
+        // to render livewire component with given props
+        app(ShortcodeRegistry::class)
+            ->register('calculator', fn ($attrs) =>
+                Blade::render(
+                    sprintf(
+                        '<livewire:calculator %s />',
+                        ShortcodeAttributes::stringify($attrs)
+                    )
+                )
+            );
+    }
+}
+```
+
 ## Testing
 
 ```bash
