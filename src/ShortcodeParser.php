@@ -25,7 +25,7 @@ class ShortcodeParser implements InlineParserInterface
             return false;
         }
 
-        $attrs = ! empty($matches[2]) ? $this->parseAttributes($matches[2]) : [];
+        $attrs = ! empty($matches[2]) ? ShortcodeAttributes::parse($matches[2]) : [];
 
         $node = new ShortcodeNode($name, $attrs);
         $inlineContext->getContainer()->appendChild($node);
@@ -33,26 +33,5 @@ class ShortcodeParser implements InlineParserInterface
         $inlineContext->getCursor()->advanceBy(strlen($matches[0]));
 
         return true;
-    }
-
-    private function parseAttributes($value): array
-    {
-        $squished = preg_replace('~(\s|\x{3164}|\x{1160})+~u', ' ', trim($value));
-        $values = explode(' ', $squished);
-
-        $attrs = [];
-
-        foreach ($values as $el) {
-            if (! str_contains($el, '=')) {
-                $attrs[$el] = true;
-
-                continue;
-            }
-
-            [$key, $val] = explode('=', $el, 2);
-            $attrs[$key] = $val;
-        }
-
-        return $attrs;
     }
 }

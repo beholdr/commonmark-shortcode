@@ -33,6 +33,15 @@ $converter = new MarkdownConverter($environment);
 echo $converter->convert('Markdown with [my-code]!');
 ```
 
+You can rebuild a shortcode attribute string using `stringify` helper:
+
+```php
+use Beholdr\CommonmarkShortcode\ShortcodeAttributes;
+
+$attrs = ['foo' => 'bar', 'enabled' => true];
+ShortcodeAttributes::stringify($attrs); // `foo=bar enabled`
+```
+
 ## Testing
 
 ```bash
