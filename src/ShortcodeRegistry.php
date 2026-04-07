@@ -6,9 +6,11 @@ class ShortcodeRegistry
 {
     protected array $handlers = [];
 
-    public function register(string $name, callable $handler): void
+    public function register(string $name, callable $handler): ShortcodeRegistry
     {
         $this->handlers[$name] = $handler;
+
+        return $this;
     }
 
     public function get(string $name): ?callable
