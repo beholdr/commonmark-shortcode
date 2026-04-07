@@ -2,8 +2,10 @@
     "name": "beholdr/commonmark-shortcode",
     "description": "Shortcodes extension for CommonMark",
     "keywords": [
-        "shortcode",
-        "commonmark"
+        "markdown",
+        "commonmark",
+        "commonmark-extension",
+        "shortcode"
     ],
     "homepage": "https://github.com/beholdr/commonmark-shortcode",
     "license": "MIT",
