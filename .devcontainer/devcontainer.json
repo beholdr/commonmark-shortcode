@@ -8,7 +8,7 @@
         "ghcr.io/danzilberdan/devcontainers/opencode:0": {}
     },
     "mounts": [
-        "source=${localEnv:HOME}/.local/share/opencode/auth.json,target=/mnt/opencode-auth.json,type=bind,consistency=cached"
+        "source=mnt,target=/mnt,type=bind,consistency=cached"
     ],
     "customizations": {
         "vscode": {

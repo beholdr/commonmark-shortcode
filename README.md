@@ -91,6 +91,10 @@ class AppServiceProvider extends ServiceProvider
 composer test
 ```
 
+## Opencode auth
+
+Put `auth.json` into `.devcontainer/mnt` folder and rename it to `opencode-auth.json`.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
