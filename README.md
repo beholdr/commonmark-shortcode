@@ -46,6 +46,8 @@ ShortcodeAttributes::stringify($attrs); // `foo=bar enabled`
 
 You can use this extension with [graham-campbell/markdown](https://github.com/GrahamCampbell/Laravel-Markdown) or [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown) packages.
 
+For example, you want to replace `[calculator amount=100]` shortcode with Livewire component, passing given attributes.
+
 1. Register extension in the markdown package config:
 
 ```php
@@ -70,8 +72,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // register `[calculator attr=value]` shortcode
-        // to render livewire component with given props
         app(ShortcodeRegistry::class)
             ->register('calculator', fn ($attrs) =>
                 Blade::render(
